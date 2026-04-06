@@ -13,7 +13,6 @@ A Spring Boot backend application to manage financial records with role-based ac
 * Dashboard APIs:
 
   * Summary (income, expense, balance)
-  * Category-wise totals
   * Monthly trends
 * Role-Based Access Control:
 
@@ -32,21 +31,25 @@ A Spring Boot backend application to manage financial records with role-based ac
 ### Users
 
 * POST /users?userId=ADMIN_ID
+* GET /users?userId=ADMIN_ID
 * PUT /users/{id}?userId=ADMIN_ID
 * DELETE /users/{id}?userId=ADMIN_ID
 
 ### Records
 
 * POST /records?userId=ADMIN_ID
-* GET /records?userId=USER_ID
+* GET /records?userId=ADMIN_ID  (OR) /records?userId=ANALYST_ID
 * PUT /records/{id}?userId=ADMIN_ID
 * DELETE /records/{id}?userId=ADMIN_ID
 
+* GET /records?userId=USER_ID&type=INCOME
+* GET /records?userId=USER_ID&category=Travel
+* GET /records?userId=USER_ID&type=EXPENSE&category=Food
+
 ### Dashboard
 
-* GET /dashboard/summary?userId=USER_ID
-* GET /dashboard/category?userId=USER_ID
-* GET /dashboard/monthly?userId=USER_ID
+* GET /dashboard/summary
+* GET /dashboard/monthly
 
 ## 🔐 Access Control
 
